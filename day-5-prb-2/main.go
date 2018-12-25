@@ -7,11 +7,6 @@ import (
 	"strings"
 )
 
-const (
-	maxInt = int(^uint(0) >> 1)
-	minInt = -maxInt - 1
-)
-
 func main() {
 	f, err := ioutil.ReadFile("input.txt")
 	if err != nil {
@@ -31,9 +26,9 @@ func main() {
 }
 
 func min(input map[string]int) int {
-	min := maxInt
+	min := -1
 	for _, d := range input {
-		if d < min {
+		if min < 0 || d < min {
 			min = d
 		}
 	}
